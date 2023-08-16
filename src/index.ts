@@ -2,7 +2,8 @@ import { User } from "./models/user";
 
 const user = new User({ name: "rafida", age: 25 });
 
-user.set({ name: "newname"});
+user.on("change", () => {});
+user.on("change", () => {});
+user.on("asdfasfd", () => {});
 
-console.log("name", user.get("name"));
-console.log("age", user.get("age"));
+console.log(user);

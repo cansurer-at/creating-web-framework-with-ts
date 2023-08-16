@@ -127,12 +127,18 @@ exports.User = void 0;
 var User = /** @class */function () {
   function User(data) {
     this.data = data;
+    this.events = {};
   }
   User.prototype.get = function (propName) {
     return this.data[propName];
   };
   User.prototype.set = function (update) {
     Object.assign(this.data, update);
+  };
+  User.prototype.on = function (eventName, callback) {
+    var handlers = this.events[eventName] || [];
+    handlers.push(callback);
+    this.events[eventName] = handlers;
   };
   return User;
 }();
@@ -148,11 +154,10 @@ var user = new user_1.User({
   name: "rafida",
   age: 25
 });
-user.set({
-  name: "newname"
-});
-console.log("name", user.get("name"));
-console.log("age", user.get("age"));
+user.on("change", function () {});
+user.on("change", function () {});
+user.on("asdfasfd", function () {});
+console.log(user);
 },{"./models/user":"src/models/user.ts"}],"../../../.npm-global/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
