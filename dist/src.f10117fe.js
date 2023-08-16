@@ -131,6 +131,9 @@ var User = /** @class */function () {
   User.prototype.get = function (propName) {
     return this.data[propName];
   };
+  User.prototype.set = function (update) {
+    Object.assign(this.data, update);
+  };
   return User;
 }();
 exports.User = User;
@@ -144,6 +147,9 @@ var user_1 = require("./models/user");
 var user = new user_1.User({
   name: "rafida",
   age: 25
+});
+user.set({
+  name: "newname"
 });
 console.log("name", user.get("name"));
 console.log("age", user.get("age"));
