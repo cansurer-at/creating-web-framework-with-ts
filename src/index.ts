@@ -2,8 +2,15 @@ import { User } from "./models/user";
 
 const user = new User({ name: "rafida", age: 25 });
 
-user.on("change", () => {});
-user.on("change", () => {});
-user.on("asdfasfd", () => {});
+user.on("change", () => {
+  console.log("Change 1");
+});
+user.on("change", () => {
+  console.log("Change 2");
+});
+user.on("save", () => {
+  console.log("save triggered");
+});
 
-console.log(user);
+user.trigger('change')
+user.trigger('asdfasdfasdf')
