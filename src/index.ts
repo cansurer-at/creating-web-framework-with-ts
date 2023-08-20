@@ -6,11 +6,10 @@ user.on("change", () => {
   console.log("Change 1");
 });
 user.on("change", () => {
-  console.log("Change 2");
+  console.log("Change 1");
 });
 user.on("save", () => {
   console.log("save triggered");
 });
-
 user.trigger('change')
 user.trigger('asdfasdfasdf')

@@ -167,7 +167,7 @@ user.on("change", function () {
   console.log("Change 1");
 });
 user.on("change", function () {
-  console.log("Change 2");
+  console.log("Change 1");
 });
 user.on("save", function () {
   console.log("save triggered");
