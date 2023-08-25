@@ -3,7 +3,6 @@ interface UserProps {
   age?: number;
 }
 
-//type alias
 type Callback = () => void;
 
 export class User {
@@ -32,7 +31,7 @@ export class User {
       return;
     }
 
-    handlers.forEach((callback) => {
+    handlers.forEach(callback => {
       callback();
     });
   }
