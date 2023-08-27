@@ -5421,7 +5421,7 @@ exports.isCancel = isCancel;
 exports.CanceledError = CanceledError;
 exports.AxiosError = AxiosError;
 exports.Axios = Axios;
-},{"./lib/axios.js":"node_modules/axios/lib/axios.js"}],"src/index.ts":[function(require,module,exports) {
+},{"./lib/axios.js":"node_modules/axios/lib/axios.js"}],"src/models/User.ts":[function(require,module,exports) {
 "use strict";
 
 var __importDefault = this && this.__importDefault || function (mod) {
@@ -5432,9 +5432,57 @@ var __importDefault = this && this.__importDefault || function (mod) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.User = void 0;
 var axios_1 = __importDefault(require("axios"));
-axios_1.default.get("http://localhost:3000/users/1");
-},{"axios":"node_modules/axios/index.js"}],"../../../.npm-global/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+var User = /** @class */function () {
+  function User(data) {
+    this.data = data;
+    this.events = {};
+  }
+  User.prototype.get = function (propName) {
+    return this.data[propName];
+  };
+  User.prototype.set = function (update) {
+    Object.assign(this.data, update);
+  };
+  User.prototype.on = function (eventName, callback) {
+    var handlers = this.events[eventName] || [];
+    handlers.push(callback);
+    this.events[eventName] = handlers;
+  };
+  User.prototype.trigger = function (eventName) {
+    var handlers = this.events[eventName];
+    if (!handlers || handlers.length === 0) {
+      return;
+    }
+    handlers.forEach(function (callback) {
+      callback();
+    });
+  };
+  User.prototype.fetch = function () {
+    var _this = this;
+    axios_1.default.get("http://localhost:3000/users/".concat(this.get("id"))).then(function (response) {
+      _this.set(response.data);
+    });
+  };
+  return User;
+}();
+exports.User = User;
+},{"axios":"node_modules/axios/index.js"}],"src/index.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var User_1 = require("./models/User");
+var user = new User_1.User({
+  id: 1
+});
+user.fetch();
+setTimeout(function () {
+  console.log('user', user);
+}, 4000);
+},{"./models/User":"src/models/User.ts"}],"../../../.npm-global/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -5459,7 +5507,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50617" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55858" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
