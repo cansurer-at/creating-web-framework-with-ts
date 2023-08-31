@@ -10,11 +10,11 @@ user.events.on("change", () => {
 class Person {
   constructor(public firstName: string, public lastName: string) {}
 
-  fullName(): string {
+  get fullName(): string {
     return `${this.firstName} ${this.lastName}`;
   }
 }
 
 const person = new Person("firstname", "lastname");
 
-console.log('person', person)
+console.log('person', person.fullName)

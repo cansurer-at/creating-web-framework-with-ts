@@ -5540,13 +5540,17 @@ var Person = /** @class */function () {
     this.firstName = firstName;
     this.lastName = lastName;
   }
-  Person.prototype.fullName = function () {
-    return "".concat(this.firstName, " ").concat(this.lastName);
-  };
+  Object.defineProperty(Person.prototype, "fullName", {
+    get: function get() {
+      return "".concat(this.firstName, " ").concat(this.lastName);
+    },
+    enumerable: false,
+    configurable: true
+  });
   return Person;
 }();
 var person = new Person("firstname", "lastname");
-console.log('person', person);
+console.log('person', person.fullName);
 },{"./models/User":"src/models/User.ts"}],"../../../.npm-global/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
