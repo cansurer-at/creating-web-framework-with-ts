@@ -5551,6 +5551,7 @@ var Person = /** @class */function () {
 }();
 var person = new Person("firstname", "lastname");
 console.log('person', person.fullName);
+console.log('person', person.lastName);
 },{"./models/User":"src/models/User.ts"}],"../../../.npm-global/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
