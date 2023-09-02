@@ -17,6 +17,4 @@ class Person {
 
 const person = new Person("firstname", "lastname");
 
-console.log('person', person.fullName)
 
-console.log('person', person.lastName)
